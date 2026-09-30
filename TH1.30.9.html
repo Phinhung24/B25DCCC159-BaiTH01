@@ -868,7 +868,7 @@
             }
 
 
-            const emailPattern = /^[^s@]+@[^s@]+.[^s@]+$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
                 showError('error-email', 'Vui lòng nhập đúng định dạng Email!');
                 isValid = false;
