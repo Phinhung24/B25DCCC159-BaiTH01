@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đàm Thị Phi Nhung (Nuri) - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style> 
+        :root {--primary: #ff8fab;    
+            --primary-hover: #ffb3c6;
+            --secondary: #a2d2ff;
+            --accent: #cdb4db;
+            
+            --bg-body: #fff8f9; 
+            --bg-card: #ffffff;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --border-color: #f1d4e5;
+            --shadow: 0 4px 15px rgba(255, 143, 171, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #1a1625;
+            --bg-card: #241e30;
+            --text-main: #f8f9fa;
+            --text-muted: #b8c1ec;
+            --border-color: #3b334a;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+         .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: rgba(255, 143, 171, 0.1);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(15deg);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+
+
+
+        .hero {
+            padding: 130px 0 70px;
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-text h2 {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .hero-quote {
+            font-style: italic;
+            background: rgba(162, 210, 255, 0.15);
+            border-left: 4px solid var(--secondary);
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff7597;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-img {
+            text-align: center;
+        }
+
+        .avatar-box {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+
+
+        .skills {
+            padding: 70px 0;
+            background-color: var(--bg-card);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .skill-card h4 {
+            font-size: 1rem;
+        }
+
+
+
+
+
+        .projects {
+            padding: 70px 0;
+        }
+
+        .project-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            padding: 10px 20px;
+            width: 300px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            height: 180px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            background-color: rgba(162, 210, 255, 0.2);
+            color: var(--text-main);
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+
+
+
+
+        .contact {
+            padding: 70px 0;
+            background-color: var(--bg-card);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 143, 171, 0.15);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .error-message {
+            color: #e63946;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+
+
+        .footer {
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+
+
+
+        @media (max-width: 1024px) {
+            .hero-content, .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-quote {
+                border-left: none;
+                border-top: 3px solid var(--secondary);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-card);
+                flex-direction: column;
+                padding: 40px 0;
+                transition: 0.4s ease;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .search-box input {
+                width: 100%;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+     <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Nuri<span>.Dev</span></a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" class="nav-link active">Trang chủ</a></li>
+                <li><a href="#skills" class="nav-link">Kỹ năng</a></li>
+                <li><a href="#projects" class="nav-link">Dự án</a></li>
+                <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="theme-toggle" id="theme-toggle" title="Đổi giao diện">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <h3>Xin chào mọi người! 👋</h3>
+                <h1>Mình là Đàm Thị Phi Nhung</h1>
+                <h2>(Biệt danh: Nuri) | Sinh viên CNTT @ PTIT</h2>
+                
+                <p class="hero-quote">
+                    "Không có việc gì khó, chỉ sợ lòng không bền."
+                </p>
+                <p>
+                    Xin chào, mình là Nhung, một người yêu cái đẹp, thích khám phá công nghệ và luôn tràn đầy năng lượng tích cực. Định hướng của mình là trở thành một Frontend Developer.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Liên hệ ngay</a>
+                    <a href="#projects" class="btn btn-secondary"><i class="fa-solid fa-briefcase"></i> Xem Dự Án</a>
+                </div>
+            </div>
+
+            <div class="hero-img reveal">
+                <div class="avatar-box">
+                    <img src="c:\Users\HL\OneDrive - ptit.edu.vn\Pictures\ảnh tết\1786701082977_123166036376061606_5980603733442797548_888e03b419bffd64e613cc93a8fa5ce0.jpg" alt="Đàm Thị Phi Nhung">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title reveal">Kỹ Năng Lập Trình</h2>
+            <div class="skills-grid reveal">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5"></i>
+                    <h4>HTML5</h4>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <h4>CSS3</h4>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-js"></i>
+                    <h4>JavaScript</h4>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-python"></i>
+                    <h4>Python</h4>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-solid fa-database"></i>
+                    <h4>MySQL</h4>
+                </div>
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <h4>Git</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title reveal">Dự Án Đã Làm</h2>
+
+            <!-- Bộ lọc & Ô Tìm kiếm -->
+            <div class="project-controls reveal">
+                <div class="search-box">
+                    <input type="text" id="project-search" placeholder="Tìm kiếm dự án theo tên...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="js">JavaScript</button>
+                    <button class="filter-btn" data-filter="database">Database</button>
+                </div>
+            </div>
+
+            <!-- Danh sách các thẻ Dự án -->
+            <div class="projects-grid reveal" id="projects-container">
+                
+                <!-- Dự án 1 -->
+                <div class="project-card" data-category="js" data-title="tiệm nail lina đặt lịch">
+                    <div class="project-img" style="background-color: #ff8fab;">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Tiệm Nail Lina</h3>
+                        <p class="project-desc">Trang web giúp khách hàng tham khảo mẫu nail đẹp và thực hiện đặt lịch hẹn làm nail trực tuyến nhanh chóng.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dự án 2 -->
+                <div class="project-card" data-category="database" data-title="quản lý điểm trường đại học">
+                    <div class="project-img" style="background-color: #a2d2ff;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Quản Lý Điểm Đại Học</h3>
+                        <p class="project-desc">Hệ thống hỗ trợ sinh viên & giáo viên theo dõi điểm thi từng môn học, giúp quản lý thông tin ngành học dễ dàng.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dự án 3 -->
+                <div class="project-card" data-category="js" data-title="ptit study companion góc học tập">
+                    <div class="project-img" style="background-color: #cdb4db;">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">PTIT Study Companion</h3>
+                        <p class="project-desc">Ứng dụng web hỗ trợ sinh viên PTIT quản lý thời gian biểu, tính điểm GPA tích lũy và lưu chú lịch học tập.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Liên Hệ Với Mình</h2>
+
+            <div class="contact-wrapper reveal">
+                <!-- Thông tin liên hệ -->
+                <div class="contact-info">
+                    <h3>Thông tin cá nhân</h3>
+                    <p style="margin-bottom: 20px; color: var(--text-muted);">Đừng ngần ngại nhắn tin cho mình nếu bạn có bất kỳ câu hỏi hoặc cơ hội hợp tác nào nhé!</p>
+                    
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong>
+                            <p>phinhung.ptit@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Số điện thoại:</strong>
+                            <p>0397958694</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Địa chỉ:</strong>
+                            <p>Hà Nội, Việt Nam</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/Phinhung24" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://locket.cam/nhungfi" target="_blank" class="social-btn" title="Locket"><i class="fa-solid fa-heart"></i></a>
+                    </div>
+                </div>
+
+                <!-- Form gửi tin nhắn -->
+                <form class="contact-form" id="contact-form" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="fullname" placeholder="Họ và tên của bạn...">
+                        <div class="error-message" id="error-fullname">Vui lòng nhập họ tên!</div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email của bạn...">
+                        <div class="error-message" id="error-email">Email không hợp lệ!</div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Nội dung lời nhắn (tối thiểu 10 ký tự)..." maxlength="200"></textarea>
+                        <div class="char-counter"><span id="char-count">0</span>/200 ký tự</div>
+                        <div class="error-message" id="error-message">Lời nhắn phải từ 10 ký tự trở lên!</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-paper-plane"></i> Gửi Tin Nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Đàm Thị Phi Nhung (Nuri) - Học viện Công nghệ Bưu chính Viễn thông (PTIT).</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeToggleBtn.innerHTML = theme === 'dark' 
+                ? '<i class="fa-solid fa-sun" style="color:#f9c74f;"></i>' 
+                : '<i class="fa-solid fa-moon"></i>';
+        }
+
+
+        const messageInput = document.getElementById('message');
+        const charCountDisplay = document.getElementById('char-count');
+
+        messageInput.addEventListener('input', () => {
+            charCountDisplay.textContent = messageInput.value.length;
+        });
+
+        const contactForm = document.getElementById('contact-form');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = messageInput.value.trim();
+
+
+            if (fullname === '') {
+                showError('error-fullname', 'Vui lòng điền họ tên!');
+                isValid = false;
+            } else {
+                hideError('error-fullname');
+            }
+
+
+            const emailPattern = /^[^s@]+@[^s@]+.[^s@]+$/;
+            if (!emailPattern.test(email)) {
+                showError('error-email', 'Vui lòng nhập đúng định dạng Email!');
+                isValid = false;
+            } else {
+                hideError('error-email');
+            }
+
+            if (message.length < 10) {
+                showError('error-message', 'Lời nhắn phải có ít nhất 10 ký tự!');
+                isValid = false;
+            } else {
+                hideError('error-message');
+            }
+
+            if (isValid) {
+                alert('Cảm ơn bạn! Tin nhắn của bạn đã được gửi thành công cho Nhung.');
+                contactForm.reset();
+                charCountDisplay.textContent = '0';
+            }
+        });
+
+        function showError(id, text) {
+            const el = document.getElementById(id);
+            el.textContent = text;
+            el.style.display = 'block';
+        }
+
+        function hideError(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        const searchInput = document.getElementById('project-search');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        searchInput.addEventListener('input', filterProjects);
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterProjects();
+            });
+        });
+
+        function filterProjects() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+            projectCards.forEach(card => {
+                const title = card.dataset.title.toLowerCase();
+                const category = card.dataset.category;
+
+                const matchesSearch = title.includes(keyword);
+                const matchesCategory = (activeFilter === 'all') || (category === activeFilter);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+    </script>
+</body>
+</html>
